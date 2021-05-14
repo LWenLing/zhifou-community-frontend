@@ -4,12 +4,11 @@
         style="{
         height: 100%;
         width: 100%;
-        background-color: #f2f5f6;
-        box-shadow: 0 1px 0 0;
-        border-radius: 12px;
+        background-color: rgba(203, 207, 221, 0.3);
+        border-radius: 50%;
         text-align: center;
         line-height: 40px;
-        color: #167df0;
+        color: rgba(62,98,223,1);
       }"
     >
       <i class="fa fa-arrow-up"></i>

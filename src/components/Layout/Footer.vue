@@ -2,7 +2,7 @@
   <footer class="footer has-text-grey-light has-background-grey-darker">
     <div class="container">
       <div class="">
-        <span>简洁、实用、美观</span>
+        <span>上知否，有问题就会有答案</span>
 
         <span style="float: right">
           <router-link :to="{path:'/admin/login'}">
@@ -50,9 +50,12 @@ export default {
 footer {
   margin-top: 120px;
   height: 150px;
+  background: rgba(62,98,223,0.7) !important;
+  color: white !important;
+
 }
 footer a{
-  color: #bfbfbf;
+  color: white !important;
 }
 
 </style>

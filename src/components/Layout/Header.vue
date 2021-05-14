@@ -162,7 +162,7 @@ export default {
   data() {
     return {
       logoUrl: require('@/assets/logo.png'),
-      doubaoImg: require('@/assets/image/doubao.png'),
+      doubaoImg: require('@/assets/image/zhifou.png'),
       searchKey: '',
       darkMode: false
     }
@@ -219,5 +219,15 @@ export default {
 input {
   width: 80%;
   height: 86%;
+}
+.is-white{
+  background: rgba(62,98,223,0.1) !important;
+  
+}
+.navbar-item{
+  color:white !important;
+}
+.is-info{
+  background:rgba(203, 207, 221, 0.3) !important;
 }
 </style>
