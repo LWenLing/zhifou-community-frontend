@@ -1,9 +1,42 @@
 <template>
+<div>
+  <section class="box comments" v-show="showPanel">
+      <article class="media">
+    <div class="media-content" >
+      <form @submit.prevent="onSubmit">
+        <b-field  type="is-info">
+          <b-input
+            v-model.lazy="commentText"
+            type="textarea"
+           
+            placeholder="写回答..."
+            :disabled="isLoading"
+          />
+        </b-field>
+        <nav>
+         
+            <b-button
+              type="is-primary"
+              native-type="submit"
+              class="button is-info pull-right"
+              :disabled="isLoading"
+            >
+              发布
+            </b-button>
+          
+        </nav>
+      </form>
+    </div>
+  </article>
+  </section>
   <section class="box comments">
+     
+    <h3 class="title is-6">{{comments.length==0?"还没有人回答过这个问题":comments.length+"个回答"}}</h3>
     
-    <h3 class="title is-6">2个回答</h3>
-    <hr />
-    <div class="comment">
+    <div class="comment"  v-for="comment in comments"
+      :key="`comment-${comment.id}`"
+      :comment="comment">
+      <hr />
         <div class="comment-header">
             <div class="comment-header">
                 <a href="" class="comment-avatar"  data-type="user">
@@ -13,7 +46,7 @@
                 </a>
                 <div class="comment-authorinfo">
                     <div>
-                        <a href="https://ask.fastadmin.net/u/36683" class="mr-5" data-toggle="popover" data-title="chepi3000" data-placement="right" data-type="user" data-id="36683"><b>chepi3000</b></a>
+                        <a href="https://ask.fastadmin.net/u/36683" class="mr-5" data-toggle="popover" data-title="chepi3000" data-placement="right" data-type="user" data-id="36683"><b>{{comment.username}}</b></a>
 
                     </div>
                     <div class="comment-title text-muted">这家伙很懒，什么也没写！</div>
@@ -23,12 +56,12 @@
         <div class="RichContent">
             <div class="RichContent-inner">
                 <span class="ztext">
-                    <p>作为财务专家跟一群高校老教授去参加一个国家级项目评审，专家组属我们两个财务人员最年轻，其他的专家都是55岁以上了。所以一直都是小辈的身份，谦虚而又略装老城。结束了一天漫长的工作，晚上在企业门口准备上车告别的时候。因为当时评审的那个项目财务上有点问题需要后续整改，所以当地科技局局长就说加一下我的微信，后面他们在财务方面还要咨询。那个局长年龄也很大了，目测50岁？我赶紧扫一扫。</p>
+                    <p>{{ comment.content }}</p>
                 </span>
             </div>
         </div>
         <div class="ContentItem-time">
-            <span data-tooltip="发布于 03-16 18:49">发布于 03-16 18:49</span>
+            <span data-tooltip="创建时间">{{ comment.createTime | date }}</span>
         </div>
         <div class="ContentItem-action mt-3">
             <span>
@@ -37,53 +70,78 @@
             </span>
         </div>
     </div>
-    <hr />
-    <div class="comment">
-        <div class="comment-header">
-            <div class="comment-header">
-                <a href="" class="comment-avatar"  data-type="user">
-                    <div>
-                        <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
-                    </div>
-                </a>
-                <div class="comment-authorinfo">
-                    <div>
-                        <a href="https://ask.fastadmin.net/u/36683" class="mr-5" data-toggle="popover" data-title="chepi3000" data-placement="right" data-type="user" data-id="36683"><b>chepi3000</b></a>
-
-                    </div>
-                    <div class="comment-title text-muted">这家伙很懒，什么也没写！</div>
-                </div>
-            </div>
-        </div>
-        <div class="RichContent">
-            <div class="RichContent-inner">
-                <span class="ztext">
-                    <p>作为财务专家跟一群高校老教授去参加一个国家级项目评审，专家组属我们两个财务人员最年轻，其他的专家都是55岁以上了。所以一直都是小辈的身份，谦虚而又略装老城。结束了一天漫长的工作，晚上在企业门口准备上车告别的时候。因为当时评审的那个项目财务上有点问题需要后续整改，所以当地科技局局长就说加一下我的微信，后面他们在财务方面还要咨询。那个局长年龄也很大了，目测50岁？我赶紧扫一扫。</p>
-                </span>
-            </div>
-        </div>
-        <div class="ContentItem-time">
-            <span data-tooltip="发布于 03-16 18:49">发布于 03-16 18:49</span>
-        </div>
-        <div class="ContentItem-action mt-3">
-            <span>
-                <button class="button is-info is-light"><i class="el-icon-caret-top mr-2"></i>赞同 628783</button>
-                <button class="button is-info is-light ml-2"><i class="el-icon-caret-bottom"></i></button>
-            </span>
-        </div>
-    </div>
+   
+    
+        
   
     
   </section>
+  </div>
 </template>
 
 <script>
 
-
-
+import { mapGetters } from 'vuex'
+import { fetchCommentsByTopicId,pushComment } from '@/api/comment'
 
 export default {
-  
+  name:"",
+ 
+  data() {
+    return {
+      comments: [],
+      commentText: '',
+      isLoading: false
+    }
+  },
+  props: {
+    slug: {
+      type: String,
+      default: null
+    },
+    showPanel:{
+        type: Boolean,
+        default: false
+    }
+  },
+  computed: {
+    ...mapGetters([
+      'token'
+    ])
+  },
+  async mounted() {
+    await this.fetchComments(this.slug)
+  },
+  methods: {
+    // 初始化
+    async fetchComments(topic_id) {
+     
+      fetchCommentsByTopicId(topic_id).then(response => {
+        const { data } = response
+        this.comments = data
+      })
+    },
+    async onSubmit() {
+      this.isLoading = true
+      try {
+        let postData = {}
+        
+        postData['content'] = this.commentText
+        postData['topic_id'] = this.slug
+        await pushComment(postData)
+        this.$emit('loadComments', this.slug)
+        this.$message.success('发表成功')
+        location.reload()
+      } catch (e) {
+        this.$buefy.toast.open({
+          message: `Cannot comment this story. ${e}`,
+          type: 'is-danger'
+        })
+      } finally {
+        this.isLoading = false
+      }
+    }
+  }
 }
 </script>
 
@@ -106,8 +164,6 @@ export default {
 .pull-right {
     float: right !important;
 }
-
-
 .comment-title {
     font-size: 12px;
     color: #999;
@@ -139,4 +195,8 @@ export default {
     color: #8590a6;
 }
 
+.textarea,.input:focus{
+   border-color:#167df0 ;
+    box-shadow: 0 0 0 0.125em rgba(22,125,240, 0.25);
+}
 </style>

@@ -11,20 +11,20 @@
           slot="header"
           class="has-text-centered"
         >
-          <p class="is-size-5 has-text-weight-bold">自己做的模板，加入{__SCRIPT__}后不解析}</p>
+          <p class="is-size-5 has-text-weight-bold">{{ topic.title }}</p>
           <div class="has-text-grey is-size-7 mt-3">
             <span>{{ dayjs(topic.createTime).format('YYYY/MM/DD HH:mm:ss') }}</span>
             <el-divider direction="vertical" />
-            <span>发布者：chepi3000</span>
+            <span>发布者：{{ topicUser.alias }}</span>
             <el-divider direction="vertical" />
-            <span>查看：9</span>
+            <span>查看：{{ topic.view }}</span>
           </div>
         </div>
 
         <!--Markdown-->
     
            <div class="question-richtext wysiwyg" itemprop="text" style="max-height: 9999px;">
-                <p>一直在那里转圈圈，f12也一直没有结果反馈。127.0.0.1（开发机）上非常好，就是发布到后出现该问题。<br><img src="https://cdn.fastadmin.net/uploads/20210425/3ccfe5c66e69f3b5fa09b065ed69db78.png" alt="image.png" title="image.png"></p>                   
+                <p>{{topic.content}}</p>                   
                 <p class="read-more" style="display: none;">
                      <a href="javascript:;" title="点击查看全文">
                         <span class="text-primary">
@@ -37,7 +37,7 @@
                 <!-- 问题操作 -->
                 <div class="comment-toolbar">
                     <b-button class="button is-info">关注问题</b-button>
-                    <b-button class="button is-info is-light ml-2"  tag="router-link" :to="{path:'/answer/comment'}"><i class="el-icon-edit mr-2"></i>写回答</b-button>
+                    <b-button class="button is-info is-light ml-2" :isShow="isShow" @click="changeShow()"><i class="el-icon-edit mr-2"></i>{{isShow?"收起面板":"写回答"}}</b-button>
                  
                 </div>
                 <!-- 问题操作 -->
@@ -45,7 +45,7 @@
       
   
       </el-card>
-       <AnswerList />
+       <AnswerList :slug="topic.id" :showPanel="isShow"/>
     </div>
       
 
@@ -79,6 +79,7 @@ export default {
   data() {
     return {
       flag: false,
+      isShow:false,
       topic: {
         content: '',
         id: this.$route.params.id
@@ -91,6 +92,9 @@ export default {
     this.fetchTopic()
   },
   methods: {
+    changeShow(){
+      this.isShow = !this.isShow;
+    },
     renderMarkdown(md) {
       Vditor.preview(document.getElementById('preview'), md, {
         hljs: { style: 'github' }
@@ -100,6 +104,7 @@ export default {
     async fetchTopic() {
       getTopic(this.$route.params.id).then(response => {
         const { data } = response
+        console.log(data)
         document.title = data.topic.title
 
         this.topic = data.topic

@@ -126,7 +126,8 @@ export default {
         size: 10,
         total: 0,
         tab: 'latest'
-      }
+      },
+      isques:false
     }
   },
   created() {
@@ -134,7 +135,7 @@ export default {
   },
   methods: {
     init(tab) {
-      getList(this.page.current, this.page.size, tab).then((response) => {
+      getList(this.page.current, this.page.size, tab,this.isques).then((response) => {
         const { data } = response
         this.page.current = data.current
         this.page.total = data.total

@@ -110,10 +110,10 @@ const routes = [
   },
 
   {
-    name: 'answer',
-    path: '/answer/answerDetail',
-    component: () => import('@/views/answer/AnswerDetail'),
-    meta: { title: '问答详情' }
+    name: "answer-detail",
+    path: "/answer/:id",
+    component: () => import("@/views/answer/AnswerDetail"),
+    meta: { title: "问答详情" },
   },
   // 用户设置
   {

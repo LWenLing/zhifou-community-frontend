@@ -1,14 +1,21 @@
 import request from '@/utils/request'
 
 // 列表
-export function getList(pageNo, size, tab) {
+export function getList(pageNo, size, tab, isques) {
   return request(({
     url: '/post/list',
     method: 'get',
-    params: { pageNo: pageNo, size: size, tab: tab }
+    params: { pageNo: pageNo, size: size, tab: tab, isques:isques }
   }))
 }
-
+// 用户列表
+export function getUserList(pageNo, size, name, isques) {
+  return request(({
+    url: '/post/own',
+    method: 'get',
+    params: { pageNo: pageNo, size: size, name: name, isques:isques }
+  }))
+}
 // 发布
 export function post(topic) {
   return request({

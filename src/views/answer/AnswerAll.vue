@@ -20,7 +20,7 @@
                   <p class="ellipsis is-ellipsis-1">
                     <el-tooltip class="item" effect="dark" :content="item.title" placement="top">
                       <router-link :to="{name:'answer-detail',params:{id:item.id}}">
-                        <span class="is-size-6">JavaScript let 对作用域链的影响？</span>
+                        <span class="is-size-6">{{item.title}}</span>
                       </router-link>
                     </el-tooltip>
                   </p>
@@ -70,7 +70,7 @@
                 <div class="">
                   <p class="ellipsis is-ellipsis-1">
                     <el-tooltip class="item" effect="dark" :content="item.title" placement="top">
-                      <router-link :to="{name:'post-detail',params:{id:item.id}}">
+                      <router-link :to="{name:'answer-detail',params:{id:item.id}}">
                         <span class="is-size-6">{{ item.title }}</span>
                       </router-link>
                     </el-tooltip>
@@ -136,7 +136,8 @@ export default {
         size: 10,
         total: 0,
         tab: 'latest'
-      }
+      },
+      isques:true
     }
   },
   created() {
@@ -144,12 +145,13 @@ export default {
   },
   methods: {
     init(tab) {
-      getList(this.page.current, this.page.size, tab).then((response) => {
+      getList(this.page.current, this.page.size, tab,this.isques).then((response) => {
         const { data } = response
         this.page.current = data.current
         this.page.total = data.total
         this.page.size = data.size
         this.articleList = data.records
+        console.log(data.records)
       })
     },
     handleClick(tab) {

@@ -66,7 +66,8 @@ export default {
       ruleForm: {
         title: '', // 标题
         tags: [], // 标签
-        content: '' // 内容
+        content: '', // 内容
+        isques:true
       },
       rules: {
         title: [

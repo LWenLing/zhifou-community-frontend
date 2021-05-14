@@ -7,7 +7,7 @@ export function getInfoByName(username, page, size) {
     method: 'get',
     params: {
       pageNo: page,
-      size: size
+      size: size,
     }
   })
 }
