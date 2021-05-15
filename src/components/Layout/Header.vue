@@ -227,6 +227,7 @@ input {
 .navbar-item{
   color:white !important;
 }
+
 .is-info{
   background:rgba(203, 207, 221, 0.3) !important;
 }

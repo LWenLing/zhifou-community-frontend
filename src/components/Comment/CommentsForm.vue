@@ -14,9 +14,9 @@
         <nav class="level">
           <div class="level-left">
             <b-button
-              type="is-primary"
+            
               native-type="submit"
-              class="level-item"
+              class="level-item bt-color"
               :disabled="isLoading"
             >
               评论
@@ -68,3 +68,10 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.bt-color{
+  background: rgba(62,98,223,0.7) !important;
+  color: aliceblue  !important;
+}
+</style>

@@ -46,10 +46,10 @@
                 </a>
                 <div class="comment-authorinfo">
                     <div>
-                        <a href="https://ask.fastadmin.net/u/36683" class="mr-5" data-toggle="popover" data-title="chepi3000" data-placement="right" data-type="user" data-id="36683"><b>{{comment.username}}</b></a>
+                        <a href="" class="mr-5" data-toggle="popover" data-title="chepi3000" data-placement="right" data-type="user" data-id="36683"><b>{{comment.username}}</b></a>
 
                     </div>
-                    <div class="comment-title text-muted">这家伙很懒，什么也没写！</div>
+                    <div class="comment-title text-muted">{{comment.bio}}</div>
                 </div>
             </div>
         </div>
@@ -65,7 +65,7 @@
         </div>
         <div class="ContentItem-action mt-3">
             <span>
-                <button class="button is-info is-light"><i class="el-icon-caret-top mr-2"></i>赞同 628783</button>
+                <button class="button is-info is-light"><i class="el-icon-caret-top mr-2"></i>赞同 3</button>
                 <button class="button is-info is-light ml-2"><i class="el-icon-caret-bottom"></i></button>
             </span>
         </div>
@@ -83,6 +83,7 @@
 
 import { mapGetters } from 'vuex'
 import { fetchCommentsByTopicId,pushComment } from '@/api/comment'
+
 
 export default {
   name:"",

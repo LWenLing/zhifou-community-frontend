@@ -56,6 +56,8 @@
         
     
 </div>
+
+       
     
   
 </template>
@@ -63,7 +65,7 @@
 <script>
 import { deleteTopic, getTopic } from '@/api/post'
 import { mapGetters } from 'vuex'
-import Author from '@/views/answer/Author'
+import Author from '@/views/post/Author'
 import AnswerList from '@/views/answer/AnswerList'
 import Vditor from 'vditor'
 import 'vditor/dist/index.css'

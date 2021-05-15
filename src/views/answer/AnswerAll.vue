@@ -8,7 +8,7 @@
               <div class="media-left">
                 <div class="qa-rank">
                     <div class="answers answered ">
-                        1            <small> 回答</small>
+                     1        <small> 回答</small>
                     </div>
                     <div class="views hidden-xs">
                     {{ item.view }}  <small>浏览</small>
