@@ -127,21 +127,21 @@
           v-else
           :label="user.alias"
         >
-          <b-navbar-item
+          <b-navbar-item class="nav-black"
             tag="router-link"
             :to="{ path: `/member/${user.username}/home` }"
           >
             🧘 个人中心
           </b-navbar-item>
           <hr class="dropdown-divider">
-          <b-navbar-item
+          <b-navbar-item class="nav-black"
             tag="router-link"
             :to="{ path: `/member/${user.username}/setting` }"
           >
             ⚙ 设置中心
           </b-navbar-item>
           <hr class="dropdown-divider">
-          <b-navbar-item
+          <b-navbar-item class="nav-black"
             tag="a"
             @click="logout"
           > 👋 退出登录
@@ -229,5 +229,8 @@ input {
 }
 .is-info{
   background:rgba(203, 207, 221, 0.3) !important;
+}
+.nav-black{
+  color: black !important;
 }
 </style>
