@@ -29,7 +29,7 @@
             已关注
           </button>
 
-          <button v-else class="button is-link button-center is-fullwidth" @click="handleFollow(user.id)">
+          <button v-else class="button is-link button-center is-fullwidth bt-color" @click="handleFollow(user.id)">
             关注
           </button>
         </div>
@@ -99,5 +99,8 @@ export default {
 </script>
 
 <style scoped>
-
+.bt-color{
+  background: rgba(62,98,223,0.7) !important;
+  color: aliceblue  !important;
+}
 </style>

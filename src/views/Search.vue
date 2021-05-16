@@ -9,7 +9,7 @@
         <article v-for="(item, index) in list" :key="index" class="media">
           <div class="media-left">
             <figure class="image is-48x48">
-              <img :src="`https://cn.gravatar.com/avatar/${item.userId}?s=164&d=monsterid`"> 
+              <img :src="`https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg`"> 
             </figure>
           </div>
           <div class="media-content">
