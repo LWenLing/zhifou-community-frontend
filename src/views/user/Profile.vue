@@ -25,7 +25,7 @@
       </div>
 
       <div class="column">
-        <!--用户发布的话题-->
+        <!--用户发布的文章-->
         <el-card class="box-card content" shadow="never">
           <el-tabs v-model="activeName" @tab-click="handleClick">
             <el-tab-pane label="我的文章" name="topic">
@@ -37,6 +37,7 @@
                   :key="index"
                   class="media"
                 >
+                 
                   <div class="media-content" v-if="item.isques === true">
                     <div class="content ellipsis is-ellipsis-1">
                       <el-tooltip

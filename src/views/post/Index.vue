@@ -7,7 +7,7 @@
             <article v-for="(item, index) in articleList" :key="index" class="media">
               <div class="media-left">
                 <figure class="image is-48x48">
-                  <img :src="`https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg`" style="border-radius: 5px;">
+                  <img :src="`https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png`" style="border-radius: 5px;">
                 </figure>
               </div>
               <div class="media-content">
@@ -53,7 +53,7 @@
             <article v-for="(item, index) in articleList" :key="index" class="media">
               <div class="media-left">
                 <figure class="image is-48x48">
-                  <img :src="`https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg`" style="border-radius: 5px;">
+                  <img :src="`https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png`" style="border-radius: 5px;">
                 </figure>
               </div>
               <div class="media-content">

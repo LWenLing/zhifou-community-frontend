@@ -10,6 +10,7 @@ export function getToken() {
 
 // 设置Token，1天,与后端同步
 export function setToken(token) {
+    // expires的单位是天
     return Cookies.set(uToken, token, {expires: 1})
 }
 

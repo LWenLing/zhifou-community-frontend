@@ -1,6 +1,7 @@
 import { getUserInfo, login, logout } from "@/api/auth/auth";
 import { getToken, setToken, removeToken } from "@/utils/auth";
 
+// 定义全局数据
 const state = {
   token: getToken(), // token
   user: "", // 用户对象
@@ -54,7 +55,7 @@ const actions = {
         });
     });
   },
-  // 注销
+  // 注销用户
   logout({ commit, state }) {
     return new Promise((resolve, reject) => {
       logout(state.token)

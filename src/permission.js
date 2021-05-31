@@ -1,19 +1,20 @@
+// 解决用户消失的问题
 import router from './router'
 import store from './store'
 import getPageTitle from '@/utils/get-page-title'
 
-import NProgress from 'nprogress' // progress bar
+import NProgress from 'nprogress' // 进度条
 import 'nprogress/nprogress.css'
-import {getToken} from "@/utils/auth"; // progress bar style
+import {getToken} from "@/utils/auth"; // 进度条形式
 
-NProgress.configure({showSpinner: false}) // NProgress Configuration
+NProgress.configure({showSpinner: false}) // NProgress配置
 
 router.beforeEach(async (to, from, next) => {
-    // start progress bar
+    // 开始进度条
     NProgress.start()
-    // set page title
+    // 设置文章标题
     document.title = getPageTitle(to.meta.title)
-    // determine whether the user has logged in
+    // 判断用户是否登录
     const hasToken = getToken();
 
     if (hasToken) {
@@ -36,6 +37,6 @@ router.beforeEach(async (to, from, next) => {
 })
 
 router.afterEach(() => {
-    // finish progress bar
+    // 结束进度条
     NProgress.done()
 })
