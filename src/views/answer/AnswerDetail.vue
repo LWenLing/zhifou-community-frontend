@@ -51,7 +51,7 @@
 
     <div class="column">
        <!--作者-->
-      <Author />           
+      <Author :user="topicUser"/>           
     </div>       
         
     
@@ -65,7 +65,7 @@
 <script>
 import { deleteTopic, getTopic } from '@/api/post'
 import { mapGetters } from 'vuex'
-import Author from '@/views/post/Author'
+import Author from '@/views/answer/Author'
 import AnswerList from '@/views/answer/AnswerList'
 import Vditor from 'vditor'
 import 'vditor/dist/index.css'
@@ -106,7 +106,7 @@ export default {
     async fetchTopic() {
       getTopic(this.$route.params.id).then(response => {
         const { data } = response
-        console.log(data)
+        console.log("初始化",data)
         document.title = data.topic.title
 
         this.topic = data.topic

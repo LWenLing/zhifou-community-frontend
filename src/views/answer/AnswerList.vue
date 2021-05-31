@@ -120,6 +120,7 @@ export default {
       fetchCommentsByTopicId(topic_id).then(response => {
         const { data } = response
         this.comments = data
+       
       })
     },
     async onSubmit() {

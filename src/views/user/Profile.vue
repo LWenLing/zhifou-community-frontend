@@ -37,8 +37,12 @@
                   :key="index"
                   class="media"
                 >
+<<<<<<< HEAD
                  
                   <div class="media-content" v-if="item.isques === true">
+=======
+                  <div class="media-content" v-if="item.isques === false">
+>>>>>>> dcd3c3be4683ce344955bef6ca86b4679428f643
                     <div class="content ellipsis is-ellipsis-1">
                       <el-tooltip
                         class="item"

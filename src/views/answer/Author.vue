@@ -7,16 +7,16 @@
       <div class="has-text-centered">
         <p class="is-size-5 mb-5">
           <router-link :to="{ path: `/member/${user.username}/home` }">
-            {{ user.alias }} <span class="is-size-7 has-text-grey">232423232</span>
+            {{ user.alias }} <span class="is-size-7 has-text-grey">{{ '@' + user.username }}</span>
           </router-link>
         </p>
         <div class="columns is-mobile">
           <div class="column is-half">
-            <code>23</code>
+            <code>{{ user.topicCount }}</code>
             <p>文章</p>
           </div>
           <div class="column is-half">
-            <code>1</code>
+            <code>{{ user.followerCount }}</code>
             <p>粉丝</p>
           </div>
         </div>
@@ -29,7 +29,7 @@
             已关注
           </button>
 
-          <button v-else class="button is-link button-center is-fullwidth" @click="handleFollow(user.id)">
+          <button v-else class="button is-info is-link button-center is-fullwidth" @click="handleFollow(user.id)">
             关注
           </button>
         </div>

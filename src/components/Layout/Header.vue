@@ -228,7 +228,12 @@ input {
 .navbar-item{
   color:white !important;
 }
-
+.navbar-item:hover{
+  color:black !important;
+}
+.router-link-exact-active{
+  color:black !important;
+}
 .is-info{
   background:rgba(203, 207, 221, 0.3) !important;
 }
