@@ -20,3 +20,10 @@ export function pushComment(data) {
   })
 }
 
+export function getComment() {
+  return request({
+    url: '/comment/all',
+    method: 'get',
+  })
+}
+

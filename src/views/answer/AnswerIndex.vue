@@ -23,7 +23,7 @@ import Carousel from '../card/Carousel.vue';
 import HotAnswer from './HotAnswer.vue';
 import Calendar from '../card/Calendar.vue';
 import LoginWelcome from './LoginWelcome.vue';
-
+import { getBillboard } from "@/api/billboard";
 
 export default {
   name: "Home",

@@ -37,7 +37,7 @@
                   :key="index"
                   class="media"
                 >
-                  <div class="media-content" v-if="item.isques === true">
+                  <div class="media-content" v-if="item.isques === false">
                     <div class="content ellipsis is-ellipsis-1">
                       <el-tooltip
                         class="item"
