@@ -168,6 +168,7 @@ export default {
     }
   },
   computed: {
+    // 通过token来判断用户是否登录，通过user来获取用户信息
     ...mapGetters(['token', 'user'])
   },
   watch: {

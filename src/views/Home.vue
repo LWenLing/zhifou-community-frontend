@@ -1,10 +1,13 @@
 <template>
   <div>
     <!-- 站内公告 -->
+
+    <!-- box是bulma的一个类，表示一个以白色为背景的长框 -->
     <div class="box">🔔 站内公告{{ billboard.content }}</div>
 
  
     <div class="columns">
+      <!-- is-three-quarters占3/4页面 -->
       <div class="column is-three-quarters">
         <TopicList></TopicList>
       </div>
@@ -35,6 +38,7 @@ export default {
   },
   methods: {
     async fetchBillboard() {
+      // 向服务器端发送请求
       getBillboard().then((value) => {
         const { data } = value;
         this.billboard = data;

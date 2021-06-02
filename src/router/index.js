@@ -7,7 +7,8 @@ const routes = [
   {
     path: "/",
     name: "Home",
-    component: () => import("@/views/Home"),
+    // @表示src根目录
+    component: () => import("@/views/Home"), 
   },
   {
     path: "/register",
@@ -129,13 +130,16 @@ const routes = [
     meta: { title: "404-NotFound" },
   },
   {
+    // 当用户输入一个无效地址，都会重定向到404页面
     path: "*",
     redirect: "/404",
     hidden: true,
   },
 ];
 
+
 const originalPush = VueRouter.prototype.push;
+// 重写push功能，调用原来的push功能，并且捕捉error，当出现异常的时候，捕捉异常就不会再抛出异常
 VueRouter.prototype.push = function push(location) {
   return originalPush.call(this, location).catch((err) => err);
 };
