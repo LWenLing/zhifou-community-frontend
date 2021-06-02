@@ -13,11 +13,11 @@
         <div class="columns is-mobile">
           <div class="column is-half">
             <code>{{ user.topicCount }}</code>
-            <p>文章</p>
+            <p>发布数</p>
           </div>
           <div class="column is-half">
             <code>{{ user.followerCount }}</code>
-            <p>粉丝</p>
+            <p>粉丝数</p>
           </div>
         </div>
         <div>

@@ -148,11 +148,10 @@
                 </article>
                 <pagination
                   v-show="page.total > 0"
-                  class="mt-5"
                   :total="page.total"
                   :page.sync="page.current"
                   :limit.sync="page.size"
-                  @pagination="fetchUserById"
+                  @pagination="init"
                 />
               </div>
 
@@ -167,13 +166,13 @@
 
 <script>
 import { getInfoByName } from "@/api/user";
-import pagination from "@/components/Pagination/index";
+import Pagination from "@/components/Pagination/";
 import { mapGetters } from "vuex";
-import { deleteTopic } from "@/api/post";
-import { getUserList } from "@/api/post";
+import { deleteTopic, getUserList } from "@/api/post";
+
 export default {
   name: "Profile",
-  components: { pagination },
+  components: { Pagination },
   data() {
     return {
       topicUser: {},
@@ -203,14 +202,10 @@ export default {
       ).then((res) => {
         const { data } = res;
         this.topicUser = data.user;
-        // this.page.current = data.topics.current;
-        // this.page.size = data.topics.size;
-        // this.page.total = data.topics.total;
-        //this.topics = data.topics.records;
-        console.log(data.topics.records);
       });
     },
     init() {
+      console.log("zouma")
       getUserList(
         this.page.current,
         this.page.size,
@@ -218,11 +213,11 @@ export default {
         this.isques
       ).then((response) => {
         const { data } = response;
+        console.log(data)
         this.page.current = data.current;
         this.page.total = data.total;
         this.page.size = data.size;
         this.list = data.records;
-        console.log(data.records);
       });
     },
     handleClick(tab) {

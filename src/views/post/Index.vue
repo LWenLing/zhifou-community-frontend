@@ -135,6 +135,7 @@ export default {
   },
   methods: {
     init(tab) {
+      //console.log("dad")
       getList(this.page.current, this.page.size, tab,this.isques).then((response) => {
         const { data } = response
         this.page.current = data.current
